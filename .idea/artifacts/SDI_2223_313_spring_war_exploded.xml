@@ -42,6 +42,7 @@
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.36" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:5.3.25" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.3.25" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">
