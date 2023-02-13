@@ -1,4 +1,4 @@
-package com.uniovi.notaneitor.entities;
+package com.uniovi.sdi2223313spring.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

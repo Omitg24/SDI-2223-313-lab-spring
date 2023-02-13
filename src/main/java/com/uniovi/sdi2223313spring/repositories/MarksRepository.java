@@ -1,6 +1,6 @@
-package com.uniovi.notaneitor.repositories;
+package com.uniovi.sdi2223313spring.repositories;
 
-import com.uniovi.notaneitor.entities.Mark;
+import com.uniovi.sdi2223313spring.entities.Mark;
 import org.springframework.data.repository.CrudRepository;
 
 public interface MarksRepository extends CrudRepository<Mark, Long> {
