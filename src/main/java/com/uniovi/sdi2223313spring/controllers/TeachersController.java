@@ -37,21 +37,21 @@ public class TeachersController {
     }
 
     @RequestMapping("/teacher/delete/{id}")
-    public String deleteteacher(@PathVariable Long id) {
+    public String deleteTeacher(@PathVariable Long id) {
         teachersService.deleteTeacher(id);
         return "redirect:/teacher/list";
     }
 
     @RequestMapping(value="/teacher/edit/{id}", method=RequestMethod.POST)
-    public String setEdit(@ModelAttribute Teacher teacher, @PathVariable Long id){
+    public String setEdit(@ModelAttribute Teacher teacher, @PathVariable Long id) {
         teacher.setId(id);
         teachersService.addTeacher(teacher);
-        return "redirect:/teacher/details/"+id;
+        return "redirect:/teacher/details/" + id;
     }
 
-    @RequestMapping(value = "/teacher/edit/{id}")
-    public String getEdit(Model model, @PathVariable Long id) {
-        model.addAttribute("teacher", teachersService.getTeacher(id));
+    @RequestMapping(value = "/teacher/edit/{teacher}")
+    public String getEdit(Model model, @PathVariable Teacher teacher) {
+        model.addAttribute("teacher", teacher);
         return "teacher/edit";
     }
 }

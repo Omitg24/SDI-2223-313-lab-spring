@@ -92,7 +92,7 @@
         <td th:text="${teacher.apellidos}">Teixeira González</td>
         <td th:text="${teacher.categoria}">App developer</td>
         <td><a th:href="${'/teacher/details/' + teacher.id}">detalles</a></td>
-        <td><a th:href="${'/teacher/edit/' + teacher.id}">modificar</a></td>
+        <td><a th:href="${'/teacher/edit/' + teacher}">modificar</a></td>
         <td><a th:href="${'/teacher/delete/' + teacher.id}">eliminar</a></td>
       </tr>
       </tbody>

@@ -12,6 +12,7 @@
     <!-- JS files: jQuery first, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
@@ -28,7 +29,7 @@
             <li class="nav-item ">
                 <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item dropdown active">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false"> Gestión de notas
                 </a>
@@ -39,7 +40,7 @@
                     <a class="dropdown-item" href="/mark/filter">Filtrar</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="profesorDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false"> Gestión de profesores
                 </a>
@@ -67,23 +68,41 @@
         </form> -->
     </div>
 </nav>
-
 <div class="container" id="main-container">
-    <h2>Detalles de la nota</h2>
-    <div class="card">
-        <div class="card-header">Descripción</div>
-        <div class="card-body">
-            <p class="card-text" th:text="${mark.description}">Ejercicio 1</p>
+    <h2>Editar Profesor</h2>
+    <form class="form-horizontal" method="post" th:action="${'/teacher/edit/' + teacher.id} ">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="dni">Dni:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="dni" name="dni" placeholder="123456789A" required="true" />
+            </div>
         </div>
-    </div>
-    <br>
-    <div class="card">
-        <div class="card-header">Puntuación</div>
-        <div class="card-body">
-            <p class="card-text" th:text="${mark.score}">100</p>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Omar" required="true" />
+            </div>
         </div>
-    </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="apellidos">Apellidos:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Teixeira González" required="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="categoria">Categoría:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="categoria" name="categoria" placeholder="App developer" required="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Modificar</button>
+            </div>
+        </div>
+    </form>
 </div>
+
 
 </body>
 </html>
