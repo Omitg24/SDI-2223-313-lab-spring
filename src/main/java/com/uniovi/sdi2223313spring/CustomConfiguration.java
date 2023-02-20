@@ -1,4 +1,4 @@
-package com.uniovi.sdi2223313spring.services;
+package com.uniovi.sdi2223313spring;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
