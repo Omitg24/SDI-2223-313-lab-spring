@@ -5,7 +5,10 @@ import com.uniovi.sdi2223313spring.services.TeachersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class TeachersController {
@@ -42,7 +45,7 @@ public class TeachersController {
         return "redirect:/teacher/list";
     }
 
-    @RequestMapping(value="/teacher/edit/{id}", method=RequestMethod.POST)
+    @RequestMapping(value = "/teacher/edit/{id}", method = RequestMethod.POST)
     public String setEdit(@ModelAttribute Teacher teacher, @PathVariable Long id) {
         teacher.setId(id);
         teachersService.addTeacher(teacher);

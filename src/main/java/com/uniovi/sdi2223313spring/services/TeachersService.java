@@ -18,13 +18,16 @@ public class TeachersService {
         teachersRepository.findAll().forEach(teachers::add);
         return teachers;
     }
+
     public Teacher getTeacher(Long id) {
         return teachersRepository.findById(id).get();
     }
+
     public void addTeacher(Teacher teacher) {
         // Si en Id es null le asignamos el último + 1 de la lista
         teachersRepository.save(teacher);
     }
+
     public void deleteTeacher(Long id) {
         teachersRepository.deleteById(id);
     }

@@ -4,37 +4,37 @@
 <body>
 <nav th:replace="fragments/nav"/>
 <div class="container" id="main-container">
-  <h2>Profesores</h2>
-  <p>Los profesores que actualmente figuran en el sistema son los siguientes:</p>
-  <div class="table-responsive">
-    <table class="table table-hover">
-      <thead>
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">Dni</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellidos</th>
-        <th scope="col">Categoria</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="teacher : ${teacherList}">
-        <td scope="row" th:text="${teacher.id}"> 1</td>
-        <td th:text="${teacher.dni}"> 123456789A</td>
-        <td th:text="${teacher.nombre}">Omar</td>
-        <td th:text="${teacher.apellidos}">Teixeira González</td>
-        <td th:text="${teacher.categoria}">App developer</td>
-        <td><a th:href="${'/teacher/details/' + teacher.id}">detalles</a></td>
-        <td><a th:href="${'/teacher/edit/' + teacher}">modificar</a></td>
-        <td><a th:href="${'/teacher/delete/' + teacher.id}">eliminar</a></td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <div th:if="${#lists.isEmpty(teacherList)}"> No teachers </div>
+    <h2>Profesores</h2>
+    <p>Los profesores que actualmente figuran en el sistema son los siguientes:</p>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Dni</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Categoria</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="teacher : ${teacherList}">
+                <td scope="row" th:text="${teacher.id}"> 1</td>
+                <td th:text="${teacher.dni}"> 123456789A</td>
+                <td th:text="${teacher.nombre}">Omar</td>
+                <td th:text="${teacher.apellidos}">Teixeira González</td>
+                <td th:text="${teacher.categoria}">App developer</td>
+                <td><a th:href="${'/teacher/details/' + teacher.id}">detalles</a></td>
+                <td><a th:href="${'/teacher/edit/' + teacher}">modificar</a></td>
+                <td><a th:href="${'/teacher/delete/' + teacher.id}">eliminar</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${#lists.isEmpty(teacherList)}"> No teachers</div>
 </div>
 <footer th:replace="fragments/footer"/>
 </body>

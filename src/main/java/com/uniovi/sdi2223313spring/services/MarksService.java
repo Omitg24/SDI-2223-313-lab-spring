@@ -19,13 +19,16 @@ public class MarksService {
         marksRepository.findAll().forEach(marks::add);
         return marks;
     }
+
     public Mark getMark(Long id) {
         return marksRepository.findById(id).get();
     }
+
     public void addMark(Mark mark) {
         // Si en Id es null le asignamos el último + 1 de la lista
         marksRepository.save(mark);
     }
+
     public void deleteMark(Long id) {
         marksRepository.deleteById(id);
     }
