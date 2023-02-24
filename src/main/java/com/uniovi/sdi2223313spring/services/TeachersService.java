@@ -25,7 +25,12 @@ public class TeachersService {
 
     public void addTeacher(Teacher teacher) {
         // Si en Id es null le asignamos el último + 1 de la lista
+        teacher.setDni(teacher.getDni().toLowerCase());
         teachersRepository.save(teacher);
+    }
+
+    public Teacher getTeacherByDni(String dni) {
+        return teachersRepository.findByDni(dni);
     }
 
     public void deleteTeacher(Long id) {

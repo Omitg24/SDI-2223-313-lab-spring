@@ -19,8 +19,7 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(Long id, String dni, String nombre, String apellidos, String categoria) {
-        this.id = id;
+    public Teacher(String dni, String nombre, String apellidos, String categoria) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
