@@ -5,10 +5,15 @@
 <nav th:replace="fragments/nav"/>
 <div class="container">
     <h2>Usuarios</h2>
-    <p>Los usuarios que actualmente figuran en el sistema son los
-        siguientes:</p>
+    <p>Los usuarios que actualmente figuran en el sistema son los siguientes:</p>
+    <button class="btn btn-primary" id="updateButton" type="button">Actualizar</button>
+    <script>
+        $("#updateButton").click(function() {
+            $("#tableUsers").load('/user/list/update');
+        });
+    </script>
     <div class="table-responsive">
-        <table class="table table-hover">
+        <table class="table table-hover" id="tableUsers" th:fragment="tableUsers">
             <thead>
             <tr>
                 <th scope="col">DNI</th>

@@ -28,7 +28,7 @@ public class UsersController {
     private SignUpFormValidator signUpFormValidator;
 
     @RequestMapping("/user/list")
-    public String getListado(Model model) {
+    public String getList(Model model) {
         model.addAttribute("usersList", usersService.getUsers());
         return "user/list";
     }
@@ -100,5 +100,11 @@ public class UsersController {
         User activeUser = usersService.getUserByDni(dni);
         model.addAttribute("markList", activeUser.getMarks());
         return "home";
+    }
+
+    @RequestMapping("/user/list/update")
+    public String updateList(Model model) {
+        model.addAttribute("usersList", usersService.getUsers());
+        return "user/list :: tableUsers";
     }
 }
