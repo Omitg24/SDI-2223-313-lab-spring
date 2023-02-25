@@ -4,17 +4,17 @@
 <body>
 <nav th:replace="fragments/nav"/>
 <div class="container" id="main-container">
-    <h2>Profesores</h2>
-    <p>Los profesores que actualmente figuran en el sistema son los siguientes:</p>
+    <h2 th:text="#{teacher.list.title}">Profesores</h2>
+    <p th:text="#{teacher.list.info}">Los profesores que actualmente figuran en el sistema son los siguientes:</p>
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
             <tr>
-                <th scope="col">id</th>
-                <th scope="col">Dni</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellidos</th>
-                <th scope="col">Categoria</th>
+                <th scope="col" th:text="#{table.id}">id</th>
+                <th scope="col" th:text="#{form.dni}">Dni</th>
+                <th scope="col" th:text="#{form.name}">Nombre</th>
+                <th scope="col" th:text="#{form.surname}">Apellidos</th>
+                <th scope="col" th:text="#{teacher.category}">Categoria</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -27,14 +27,14 @@
                 <td th:text="${teacher.nombre}">Omar</td>
                 <td th:text="${teacher.apellidos}">Teixeira González</td>
                 <td th:text="${teacher.categoria}">App developer</td>
-                <td><a th:href="${'/teacher/details/' + teacher.id}">detalles</a></td>
-                <td><a th:href="${'/teacher/edit/' + teacher}">modificar</a></td>
-                <td><a th:href="${'/teacher/delete/' + teacher.id}">eliminar</a></td>
+                <td><a th:href="${'/teacher/details/' + teacher.id}" th:text="#{list.details}">detalles</a></td>
+                <td><a th:href="${'/teacher/edit/' + teacher}" th:text="#{list.modify}">modificar</a></td>
+                <td><a th:href="${'/teacher/delete/' + teacher.id}" th:text="#{list.delete}">eliminar</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <div th:if="${#lists.isEmpty(teacherList)}"> No teachers</div>
+    <div th:if="${#lists.isEmpty(teacherList)}" th:text="#{teacher.list.empty}"> No teachers</div>
 </div>
 <footer th:replace="fragments/footer"/>
 </body>

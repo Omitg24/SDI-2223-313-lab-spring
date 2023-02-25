@@ -14,31 +14,31 @@
             <li class="nav-item dropdown">
                 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
                    href="#"
-                   id="navbarDropdown" role="button"> Gestión de notas
+                   id="navbarDropdown" role="button" th:text="#{nav.mark.title}"> Gestión de notas
                 </a>
                 <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                    <a class="dropdown-item" href="/mark/add">Agregar nota</a>
-                    <a class="dropdown-item" href="/mark/list">Ver notas</a>
+                    <a class="dropdown-item" href="/mark/add" th:text="#{nav.mark.add}">Agregar nota</a>
+                    <a class="dropdown-item" href="/mark/list" th:text="#{nav.mark.list}">Ver notas</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
                    href="#"
-                   id="profesorDropdown" role="button"> Gestión de profesores
+                   id="profesorDropdown" role="button" th:text="#{nav.teacher.title}"> Gestión de profesores
                 </a>
                 <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                    <a class="dropdown-item" href="/teacher/add">Agregar profesor</a>
-                    <a class="dropdown-item" href="/teacher/list">Ver profesores</a>
+                    <a class="dropdown-item" href="/teacher/add" th:text="#{nav.teacher.add}">Agregar profesor</a>
+                    <a class="dropdown-item" href="/teacher/list" th:text="#{nav.teacher.list}">Ver profesores</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
                    href="#"
-                   id="userDropdown" role="button"> Gestión de usuarios
+                   id="userDropdown" role="button" th:text="#{nav.user.title}"> Gestión de usuarios
                 </a>
                 <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                    <a class="dropdown-item" href="/user/add">Agregar usuario</a>
-                    <a class="dropdown-item" href="/user/list">Ver usuarios</a>
+                    <a class="dropdown-item" href="/user/add" th:text="#{nav.user.add}">Agregar usuario</a>
+                    <a class="dropdown-item" href="/user/list" th:text="#{nav.user.list}">Ver usuarios</a>
                 </div>
             </li>
         </ul>
@@ -57,6 +57,10 @@
                     <a class="dropdown-item" id="btnSpanish" value="ES">
                         <img style="border: 0; float: left; margin-right: 15px" th:src="@{/images/if_spain_flag.png}"/>
                         <span th:text="#{language.es}">Español</span>
+                    </a>
+                    <a class="dropdown-item" id="btnGreek" value="GRC">
+                        <img style="border: 0; float: left; margin-right: 15px" th:src="@{/images/if_greece_flag.png}"/>
+                        <span th:text="#{language.grc}">Griego</span>
                     </a>
                 </div>
             </li>

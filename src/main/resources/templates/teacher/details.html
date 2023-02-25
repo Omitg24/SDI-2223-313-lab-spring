@@ -4,30 +4,30 @@
 <body>
 <nav th:replace="fragments/nav"/>
 <div class="container" id="main-container">
-    <h2>Detalles del profesor</h2>
+    <h2 th:text="#{teacher.details.title}">Detalles del profesor</h2>
     <div class="card">
-        <div class="card-header">Dni</div>
+        <div class="card-header" th:text="#{form.dni}">Dni</div>
         <div class="card-body">
             <p class="card-text" th:text="${teacher.dni}">123456789A</p>
         </div>
     </div>
     <br>
     <div class="card">
-        <div class="card-header">Nombre</div>
+        <div class="card-header" th:text="#{form.name}">Nombre</div>
         <div class="card-body">
             <p class="card-text" th:text="${teacher.nombre}">Omar</p>
         </div>
     </div>
     <br>
     <div class="card">
-        <div class="card-header">Apellidos</div>
+        <div class="card-header" th:text="#{form.surname}">Apellidos</div>
         <div class="card-body">
             <p class="card-text" th:text="${teacher.apellidos}">Teixeira González</p>
         </div>
     </div>
     <br>
     <div class="card">
-        <div class="card-header">Categoría</div>
+        <div class="card-header" th:text="#{teacher.category}">Categoría</div>
         <div class="card-body">
             <p class="card-text" th:text="${teacher.categoria}">App developer</p>
         </div>

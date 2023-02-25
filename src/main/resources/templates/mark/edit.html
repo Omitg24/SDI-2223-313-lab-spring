@@ -4,10 +4,10 @@
 <body>
 <nav th:replace="fragments/nav"/>
 <div class="container" id="main-container">
-    <h2>Editar nota</h2>
+    <h2 th:text="#{mark.edit.title}">Editar nota</h2>
     <form class="form-horizontal" method="post" th:action="${'/mark/edit/' + mark.id}" th:object="${mark}">
         <div class="form-group">
-            <label class="control-label col-sm-2" for="description">Descripción:</label>
+            <label class="control-label col-sm-2" for="description" th:text="#{mark.description}">Descripción:</label>
             <div class="col-sm-10">
                 <input class="form-control" id="description" name="description" placeholder="Ejemplo Ejercicio 1"
                        required="true"
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="score">Puntuación:</label>
+            <label class="control-label col-sm-2" for="score" th:text="#{mark.score}">Puntuación:</label>
             <div class="col-sm-10">
                 <input class="form-control" id="score" name="score" placeholder="Entre 0 y 10" required="true"
                        th:value="${mark.score}"
@@ -26,7 +26,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn btn-primary" type="submit">Modificar</button>
+                <button class="btn btn-primary" type="submit" th:text="#{form.modify}">Modificar</button>
             </div>
         </div>
     </form>

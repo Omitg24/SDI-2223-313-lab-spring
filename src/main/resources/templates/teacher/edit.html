@@ -4,10 +4,10 @@
 <body>
 <nav th:replace="fragments/nav"/>
 <div class="container" id="main-container">
-    <h2>Editar Profesor</h2>
+    <h2 th:text="#{teacher.edit.title}">Editar Profesor</h2>
     <form class="form-horizontal" method="post" th:action="${'/teacher/edit/' + teacher.id}" th:object="${teacher}">
         <div class="form-group">
-            <label class="control-label col-sm-2" for="dni">Dni:</label>
+            <label class="control-label col-sm-2" for="dni" th:text="#{form.dni}">Dni:</label>
             <div class="col-sm-10">
                 <input class="form-control" id="dni" name="dni" placeholder="123456789A"
                        required="true" th:value="${teacher.dni}" type="text"/>
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+            <label class="control-label col-sm-2" for="nombre" th:text="#{form.name}">Nombre:</label>
             <div class="col-sm-10">
                 <input class="form-control" id="nombre" name="nombre" placeholder="Omar"
                        required="true" th:value="${teacher.nombre}" type="text"/>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="apellidos">Apellidos:</label>
+            <label class="control-label col-sm-2" for="apellidos" th:text="#{form.surname}">Apellidos:</label>
             <div class="col-sm-10">
                 <input class="form-control" id="apellidos" name="apellidos" placeholder="Teixeira González"
                        required="true" th:value="${teacher.apellidos}" type="text"/>
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="categoria">Categoría:</label>
+            <label class="control-label col-sm-2" for="categoria" th:text="#{teacher.category}">Categoría:</label>
             <div class="col-sm-10">
                 <input class="form-control" id="categoria" name="categoria" placeholder="App developer"
                        required="true" th:value="${teacher.categoria}" type="text"/>
@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn btn-primary" type="submit">Modificar</button>
+                <button class="btn btn-primary" type="submit" th:text="#{form.modify}">Modificar</button>
             </div>
         </div>
     </form>

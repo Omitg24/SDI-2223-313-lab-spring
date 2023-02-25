@@ -4,23 +4,23 @@
 <body>
 <nav th:replace="fragments/nav"/>
 <div class="container" id="main-container">
-    <h2>Detalles del usuario</h2>
+    <h2 th:text="#{user.details.title}">Detalles del usuario</h2>
     <div class="card">
-        <div class="card-header">DNI</div>
+        <div class="card-header" th:text="#{form.dni}">DNI</div>
         <div class="card-body">
             <p class="card-text" th:text="${user.dni}">88888847X</p>
         </div>
     </div>
     <br>
     <div class="card">
-        <div class="card-header">Nombre</div>
+        <div class="card-header" th:text="#{form.name}">Nombre</div>
         <div class="card-body">
             <p class="card-text" th:text="${user.name}">Juan</p>
         </div>
     </div>
     <br>
     <div class="card">
-        <div class="card-header">Apellidos</div>
+        <div class="card-header" th:text="#{form.surname}">Apellidos</div>
         <div class="card-body">
             <p class="card-text" th:text="${user.lastName}">Peréz Almonte</p>
         </div>

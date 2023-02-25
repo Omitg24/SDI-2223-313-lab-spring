@@ -4,9 +4,9 @@
 <body>
 <nav th:replace="fragments/nav"/>
 <div class="container" id="main-container">
-    <h2>Notas</h2>
-    <p>Las notas que actualmente figuran en el sistema son las siguientes:</p>
-    <button class="btn btn-primary" id="updateButton" type="button">Actualizar</button>
+    <h2 th:text="#{mark.list.title}">Notas</h2>
+    <p th:text="#{mark.list.info}">Las notas que actualmente figuran en el sistema son las siguientes:</p>
+    <button class="btn btn-primary" id="updateButton" type="button" th:text="#{button.update}">Actualizar</button>
     <script>
         $("#updateButton").click(function () {
             $("#tableMarks").load('/mark/list/update');
@@ -16,9 +16,9 @@
         <table class="table table-hover" id="tableMarks" th:fragment="tableMarks">
             <thead>
             <tr>
-                <th scope="col">id</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Puntuación</th>
+                <th scope="col" th:text="#{table.id}">id</th>
+                <th scope="col" th:text="#{mark.description}">Descripción</th>
+                <th scope="col" th:text="#{mark.score}">Puntuación</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -29,14 +29,14 @@
                 <td scope="row" th:text="${mark.id}"> 1</td>
                 <td th:text="${mark.description}"> Ejercicio 1</td>
                 <td th:text="${mark.score}">10</td>
-                <td><a th:href="${'/mark/details/' + mark.id}">detalles</a></td>
-                <td><a th:href="${'/mark/edit/' + mark.id}">modificar</a></td>
-                <td><a th:href="${'/mark/delete/' + mark.id}">eliminar</a></td>
+                <td><a th:href="${'/mark/details/' + mark.id}" th:text="#{list.details}">detalles</a></td>
+                <td><a th:href="${'/mark/edit/' + mark.id}" th:text="#{list.modify}">modificar</a></td>
+                <td><a th:href="${'/mark/delete/' + mark.id}" th:text="#{list.delete}">eliminar</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <div th:if="${#lists.isEmpty(markList)}"> No marks</div>
+    <div th:if="${#lists.isEmpty(markList)}" th:text="#{mark.list.empty}"> No marks</div>
 </div>
 <footer th:replace="fragments/footer"/>
 </body>
