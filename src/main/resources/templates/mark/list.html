@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-
+springsecurity4">
 <head th:replace="fragments/head"/>
 <body>
 <nav th:replace="fragments/nav"/>
@@ -30,8 +31,37 @@
                 <td th:text="${mark.description}"> Ejercicio 1</td>
                 <td th:text="${mark.score}">10</td>
                 <td><a th:href="${'/mark/details/' + mark.id}" th:text="#{list.details}">detalles</a></td>
-                <td><a th:href="${'/mark/edit/' + mark.id}" th:text="#{list.modify}">modificar</a></td>
-                <td><a th:href="${'/mark/delete/' + mark.id}" th:text="#{list.delete}">eliminar</a></td>
+                <td><a sec:authorize="hasRole('ROLE_PROFESSOR')" th:href="${'/mark/edit/' + mark.id}" th:text="#{list.modify}">modificar</a>
+                    <div sec:authorize="hasRole('ROLE_STUDENT')" >
+                        <div th:if="${mark.resend}">
+                            <button type="button" th:id="${'resendButton' + mark.id}"
+                                    class="btn btn-success">Reenviar</button>
+                            <script th:inline="javascript">
+                                /*<![CDATA[*/
+                                $( "#resendButton"+ "[[${mark.id}]]").click(function() {
+                                    $.get( "/mark/[[${mark.id}]]/noresend", function( data ) {
+                                        $("#tableMarks").load('/mark/list/update');
+                                    });
+                                });
+                                /*]]>*/
+                            </script>
+                        </div>
+                        <div th:unless="${mark.resend}">
+                            <button type="button" th:id="${'noresendButton' + mark.id}"
+                                    class="btn btn-info">No reenviar</button>
+                            <script th:inline="javascript">
+                                /*<![CDATA[*/
+                                $( "#noresendButton"+ "[[${mark.id}]]" ).click(function() {
+                                    $.get( "/mark/[[${mark.id}]]/resend", function( data ) {
+                                        $("#tableMarks").load('/mark/list/update');
+                                    });
+                                });
+                                /*]]>*/
+                            </script>
+                        </div>
+                    </div>
+                </td>
+                <td><a sec:authorize="hasRole('PROFESSOR')" th:href="${'/mark/delete/' + mark.id}" th:text="#{list.delete}">eliminar</a></td>
             </tr>
             </tbody>
         </table>

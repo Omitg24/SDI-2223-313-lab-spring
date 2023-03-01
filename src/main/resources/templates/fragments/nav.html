@@ -1,5 +1,6 @@
 <!-- nav.html -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-
+springsecurity4">
     <a class="navbar-brand" href="#"></a>
     <img alt="logo" src="/images/student-48.png"/>
     <button aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
@@ -7,7 +8,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="my-navbarColor02">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" sec:authorize="isAuthenticated()">
             <li class="nav-item ">
                 <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
             </li>
@@ -17,11 +18,11 @@
                    id="navbarDropdown" role="button" th:text="#{nav.mark.title}"> Gestión de notas
                 </a>
                 <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                    <a class="dropdown-item" href="/mark/add" th:text="#{nav.mark.add}">Agregar nota</a>
+                    <a class="dropdown-item" href="/mark/add" sec:authorize="hasRole('ROLE_PROFESSOR')" th:text="#{nav.mark.add}">Agregar nota</a>
                     <a class="dropdown-item" href="/mark/list" th:text="#{nav.mark.list}">Ver notas</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')" >
                 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
                    href="#"
                    id="profesorDropdown" role="button" th:text="#{nav.teacher.title}"> Gestión de profesores
@@ -31,7 +32,7 @@
                     <a class="dropdown-item" href="/teacher/list" th:text="#{nav.teacher.list}">Ver profesores</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
                 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
                    href="#"
                    id="userDropdown" role="button" th:text="#{nav.user.title}"> Gestión de usuarios
@@ -64,16 +65,22 @@
                     </a>
                 </div>
             </li>
-            <li class="nav-item">
+            <li sec:authorize="!isAuthenticated()" class="nav-item">
                 <a class="nav-link" href="/registrarse">
                     <i class='fas fa-user-alt' style='font-size:16px'></i>
                     <span th:text="#{signup.message}"></span>
                 </a>
             </li>
-            <li class="nav-item">
+            <li sec:authorize="!isAuthenticated()" class="nav-item">
                 <a class="nav-link" href="/identificarse">
                     <i class='fas fa-sign-in-alt' style='font-size:16px'></i>
                     <span th:text="#{login.message}"></span>
+                </a>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <a class="nav-link" href="/logout">
+                    <i class='fas fa-sign-out-alt' style='font-size:16px'></i>
+                    <span>Desconectar</span>
                 </a>
             </li>
         </ul>
