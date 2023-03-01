@@ -12,31 +12,6 @@
             $("#tableMarks").load('/mark/list/update');
         });
     </script>
-    <p>Notas consultadas recientemente por el usuario:</p>
-    <div class="table-responsive">
-        <table class="table table-hover" th:fragment="tableMarks" id="consultedTableMarks">
-            <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Puntuación</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="mark : ${consultedList}">
-                <td th:text="${mark.id}"> 1</td>
-                <td th:text="${mark.description}"> Ejercicio 1</td>
-                <td th:text="${mark.score}">10</td>
-                <td><a th:href="${'/mark/details/' + mark.id}">detalles</a></td>
-                <td><a th:href="${'/mark/edit/' + mark.id}">modificar</a></td>
-                <td><a th:href="${'/mark/delete/' + mark.id}">eliminar</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
     <div class="table-responsive">
         <table class="table table-hover" id="tableMarks" th:fragment="tableMarks">
             <thead>
