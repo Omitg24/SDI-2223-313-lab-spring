@@ -6,6 +6,13 @@ springsecurity4">
 <nav th:replace="fragments/nav"/>
 <div class="container" id="main-container">
     <h2 th:text="#{mark.list.title}">Notas</h2>
+    <form class="form-inline" action="/mark/list">
+        <div class="form-group">
+            <input name="searchText" type="text" class="form-control" size="50"
+                   placeholder="Buscar por descripción o nombre del alumno">
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
     <p th:text="#{mark.list.info}">Las notas que actualmente figuran en el sistema son las siguientes:</p>
     <button class="btn btn-primary" id="updateButton" type="button" th:text="#{button.update}">Actualizar</button>
     <script>
