@@ -23,13 +23,13 @@ springsecurity4">
                     <a class="dropdown-item" href="/mark/list" th:text="#{nav.mark.list}">Ver notas</a>
                 </div>
             </li>
-            <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+            <li class="nav-item dropdown">
                 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
                    href="#"
                    id="profesorDropdown" role="button" th:text="#{nav.teacher.title}"> Gestión de profesores
                 </a>
                 <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                    <a class="dropdown-item" href="/teacher/add" th:text="#{nav.teacher.add}">Agregar profesor</a>
+                    <a class="dropdown-item" href="/teacher/add" sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{nav.teacher.add}">Agregar profesor</a>
                     <a class="dropdown-item" href="/teacher/list" th:text="#{nav.teacher.list}">Ver profesores</a>
                 </div>
             </li>

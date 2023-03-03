@@ -1,6 +1,7 @@
 package com.uniovi.sdi2223313spring.services;
 
 import com.uniovi.sdi2223313spring.entities.Mark;
+import com.uniovi.sdi2223313spring.entities.Teacher;
 import com.uniovi.sdi2223313spring.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +15,14 @@ public class InsertSampleDataService {
     @Autowired
     private UsersService usersService;
     @Autowired
+    private TeachersService teachersService;
+    @Autowired
     private RolesService rolesService;
 
     @PostConstruct
     public void init() {
+        Teacher teacher1 = new Teacher("99999990A", "Enol", "García González", "Ciencia de la Computación e Inteligencia Artificial");
+        Teacher teacher2 = new Teacher("99999990A", "Enrique", "de la Cal Martín", "Ciencia de la Computación e Inteligencia Artificial");
         User user1 = new User("99999990A", "Pedro", "Díaz");
         user1.setPassword("123456");
         user1.setRole(rolesService.getRoles()[0]);
@@ -77,5 +82,7 @@ public class InsertSampleDataService {
         usersService.addUser(user4);
         usersService.addUser(user5);
         usersService.addUser(user6);
+        teachersService.addTeacher(teacher1);
+        teachersService.addTeacher(teacher2);
     }
 }
