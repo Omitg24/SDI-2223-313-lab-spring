@@ -12,10 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
+import java.util.LinkedList;
+import java.util.List;
 
 @Controller
 public class UsersController {
@@ -31,8 +32,17 @@ public class UsersController {
     private SignUpFormValidator signUpFormValidator;
 
     @RequestMapping("/user/list")
-    public String getList(Model model) {
-        model.addAttribute("usersList", usersService.getUsers());
+    public String getList(Model model, Principal principal, @RequestParam(value="", required=false) String searchText ) {
+        List<User> users = new LinkedList<>();
+        String dni = principal.getName();
+        User user = usersService.getUserByDni(dni);
+        if(searchText != null && !searchText.isEmpty()){
+            users = usersService.searchByNameAndLastName(searchText,user);
+        }
+        else {
+            users = usersService.getUsers();
+        }
+        model.addAttribute("usersList", users);
         return "user/list";
     }
 
