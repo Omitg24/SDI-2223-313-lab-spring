@@ -12,18 +12,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 @Service
 public class MarksService {
 
-    @Autowired
-    private MarksRepository marksRepository;
-
     /* Inyección de dependencias basada en constructor*/
     private final HttpSession httpSession;
+    @Autowired
+    private MarksRepository marksRepository;
 
     @Autowired
     public MarksService(HttpSession httpSession) {
@@ -68,9 +65,9 @@ public class MarksService {
         return marks;
     }
 
-    public Page<Mark> searchMarksByDescriptionAndNameForUser(Pageable pageable,String searchText, User user) {
+    public Page<Mark> searchMarksByDescriptionAndNameForUser(Pageable pageable, String searchText, User user) {
         Page<Mark> marks = new PageImpl<Mark>(new LinkedList<Mark>());
-        searchText = "%"+searchText+"%";
+        searchText = "%" + searchText + "%";
         if (user.getRole().equals("ROLE_STUDENT")) {
             marks = marksRepository.searchByDescriptionNameAndUser(pageable, searchText, user);
         }

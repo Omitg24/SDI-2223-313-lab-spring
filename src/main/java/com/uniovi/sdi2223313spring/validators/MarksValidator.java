@@ -16,7 +16,7 @@ public class MarksValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Mark mark = (Mark) target;
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description","Error.empty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "Error.empty");
         if (mark.getScore() < 0 || mark.getScore() > 10) {
             errors.rejectValue("score", "Error.mark.score.range");
         }

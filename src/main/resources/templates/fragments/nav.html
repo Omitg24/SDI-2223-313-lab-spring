@@ -18,11 +18,12 @@ springsecurity4">
                    id="navbarDropdown" role="button" th:text="#{nav.mark.title}"> Gestión de notas
                 </a>
                 <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                    <a class="dropdown-item" href="/mark/add" sec:authorize="hasRole('ROLE_PROFESSOR')" th:text="#{nav.mark.add}">Agregar nota</a>
+                    <a class="dropdown-item" href="/mark/add" sec:authorize="hasRole('ROLE_PROFESSOR')"
+                       th:text="#{nav.mark.add}">Agregar nota</a>
                     <a class="dropdown-item" href="/mark/list" th:text="#{nav.mark.list}">Ver notas</a>
                 </div>
             </li>
-            <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')" >
+            <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
                 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
                    href="#"
                    id="profesorDropdown" role="button" th:text="#{nav.teacher.title}"> Gestión de profesores
@@ -65,19 +66,19 @@ springsecurity4">
                     </a>
                 </div>
             </li>
-            <li sec:authorize="!isAuthenticated()" class="nav-item">
+            <li class="nav-item" sec:authorize="!isAuthenticated()">
                 <a class="nav-link" href="/registrarse">
                     <i class='fas fa-user-alt' style='font-size:16px'></i>
                     <span th:text="#{signup.message}"></span>
                 </a>
             </li>
-            <li sec:authorize="!isAuthenticated()" class="nav-item">
+            <li class="nav-item" sec:authorize="!isAuthenticated()">
                 <a class="nav-link" href="/identificarse">
                     <i class='fas fa-sign-in-alt' style='font-size:16px'></i>
                     <span th:text="#{login.message}"></span>
                 </a>
             </li>
-            <li sec:authorize="isAuthenticated()" class="nav-item">
+            <li class="nav-item" sec:authorize="isAuthenticated()">
                 <a class="nav-link" href="/logout">
                     <i class='fas fa-sign-out-alt' style='font-size:16px'></i>
                     <span>Desconectar</span>

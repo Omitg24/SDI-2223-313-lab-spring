@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-
-springsecurity4">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-
+springsecurity4" xmlns:th="http://thymeleaf.org">
 <head th:replace="fragments/head"/>
 <body>
 <nav th:replace="fragments/nav"/>
@@ -9,32 +9,11 @@ springsecurity4">
     <h3 th:text="#{home.info}">Esta es una zona privada la web</h3>
     <p th:text="#{home.user.info}">
         Usuario Autenticado como :
-        <b th:inline="text" sec:authentication="principal.username"></b>
+        <b sec:authentication="principal.username" th:inline="text"></b>
     </p>
     <p th:text="#{home.marks}">Notas del usuario</p>
     <div class="table-responsive">
-        <table class="table table-hover" th:fragment="tableMarks" id="tableMarks">
-            <thead>
-            <tr>
-                <th scope="col" th:text="#{table.id}">id</th>
-                <th scope="col" th:text="#{mark.description}">Descripción</th>
-                <th scope="col" th:text="#{mark.score}">Puntuación</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="mark : ${markList}">
-                <td scope="row" th:text="${mark.id}"> 1</td>
-                <td th:text="${mark.description}"> Ejercicio 1</td>
-                <td th:text="${mark.score}">10</td>
-                <td><a th:href="${'/mark/details/' + mark.id}" th:text="#{list.details}">detalles</a></td>
-                <td><a th:href="${'/mark/edit/' + mark.id}" th:text="#{list.modify}">modificar</a></td>
-                <td><a th:href="${'/mark/delete/' + mark.id}" th:text="#{list.delete}">eliminar</a></td>
-            </tr>
-            </tbody>
-        </table>
+        <table th:replace="fragments/marksTable"/>
     </div>
 </div>
 </div>

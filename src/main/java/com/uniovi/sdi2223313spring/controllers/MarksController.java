@@ -20,9 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
-import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Set;
 
 @Controller
 public class MarksController {
@@ -42,7 +40,7 @@ public class MarksController {
 
     @RequestMapping("/mark/list")
     public String getList(Model model, Pageable pageable, Principal principal,
-                          @RequestParam(value="", required = false) String searchText){
+                          @RequestParam(value = "", required = false) String searchText) {
         String dni = principal.getName(); // DNI es el name de la autenticación
         User user = usersService.getUserByDni(dni);
         Page<Mark> marks = new PageImpl<Mark>(new LinkedList<Mark>());
@@ -120,17 +118,18 @@ public class MarksController {
         User user = usersService.getUserByDni(dni);
         Page<Mark> marks = marksService.getMarksForUser(pageable, user);
         model.addAttribute("markList", marks.getContent());
-        return "mark/list :: tableMarks";
+        return "fragments/marksTable :: tableMarks";
     }
 
     @RequestMapping(value = "/mark/{id}/resend", method = RequestMethod.GET)
     public String setResendTrue(@PathVariable Long id) {
         marksService.setMarkResend(true, id);
-        return "redirect:/mark/list";
+        return "fragments/marksTable";
     }
+
     @RequestMapping(value = "/mark/{id}/noresend", method = RequestMethod.GET)
     public String setResendFalse(@PathVariable Long id) {
         marksService.setMarkResend(false, id);
-        return "redirect:/mark/list";
+        return "fragments/marksTable";
     }
 }
