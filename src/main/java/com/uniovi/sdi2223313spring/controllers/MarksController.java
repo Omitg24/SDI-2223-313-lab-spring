@@ -57,10 +57,10 @@ public class MarksController {
     }
 
     @RequestMapping(value = "/mark/add", method = RequestMethod.POST)
-    public String setMark(@Validated Mark mark, BindingResult result, Model model) {
+    public String setMark(@Validated Mark mark, Pageable pageable, BindingResult result, Model model) {
         marksValidator.validate(mark, result);
         if (result.hasErrors()) {
-            model.addAttribute("usersList", usersService.getUsers());
+            model.addAttribute("usersList", usersService.getUsers(pageable));
             model.addAttribute("mark", mark);
             return "mark/add";
         }
@@ -71,8 +71,8 @@ public class MarksController {
 
     //Modificamos los siguientes metodos
     @RequestMapping(value = "/mark/add")
-    public String getMark(Model model) {
-        model.addAttribute("usersList", usersService.getUsers());
+    public String getMark(Model model, Pageable pageable) {
+        model.addAttribute("usersList", usersService.getUsers(pageable));
         model.addAttribute("mark", new Mark());
         return "mark/add";
     }
@@ -90,17 +90,17 @@ public class MarksController {
     }
 
     @RequestMapping(value = "/mark/edit/{id}")
-    public String getEdit(Model model, @PathVariable Long id) {
+    public String getEdit(Model model, Pageable pageable, @PathVariable Long id) {
         model.addAttribute("mark", marksService.getMark(id));
-        model.addAttribute("usersList", usersService.getUsers());
+        model.addAttribute("usersList", usersService.getUsers(pageable));
         return "mark/edit";
     }
 
     @RequestMapping(value = "/mark/edit/{id}", method = RequestMethod.POST)
-    public String setEdit(@Validated Mark mark, BindingResult result, @PathVariable Long id, Model model) {
+    public String setEdit(@Validated Mark mark, Pageable pageable, BindingResult result, @PathVariable Long id, Model model) {
         marksValidator.validate(mark, result);
         if (result.hasErrors()) {
-            model.addAttribute("usersList", usersService.getUsers());
+            model.addAttribute("usersList", usersService.getUsers(pageable));
             model.addAttribute("mark", mark);
             return "mark/edit";
         }

@@ -4,6 +4,8 @@ import com.uniovi.sdi2223313spring.entities.Teacher;
 import com.uniovi.sdi2223313spring.services.TeachersService;
 import com.uniovi.sdi2223313spring.validators.TeachersValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,8 +24,10 @@ public class TeachersController {
     private TeachersValidator teachersValidator;
 
     @RequestMapping("/teacher/list")
-    public String getList(Model model) {
-        model.addAttribute("teacherList", teachersService.getTeachers());
+    public String getList(Model model, Pageable pageable) {
+        Page<Teacher> teachers = teachersService.getTeachers(pageable);
+        model.addAttribute("teacherList", teachers.getContent());
+        model.addAttribute("page", teachers);
         return "teacher/list";
     }
 

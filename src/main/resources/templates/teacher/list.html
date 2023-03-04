@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-
-springsecurity4">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-
+springsecurity4" xmlns:th="http://thymeleaf.org">
 <head th:replace="fragments/head"/>
 <body>
 <nav th:replace="fragments/nav"/>
@@ -28,14 +28,18 @@ springsecurity4">
                 <td th:text="${teacher.nombre}">Omar</td>
                 <td th:text="${teacher.apellidos}">Teixeira González</td>
                 <td th:text="${teacher.categoria}">App developer</td>
-                <td><a sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_PROFESSOR')" th:href="${'/teacher/details/' + teacher.id}" th:text="#{list.details}">detalles</a></td>
-                <td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/teacher/edit/' + teacher}" th:text="#{list.modify}">modificar</a></td>
-                <td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/teacher/delete/' + teacher.id}" th:text="#{list.delete}">eliminar</a></td>
+                <td><a sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_PROFESSOR')"
+                       th:href="${'/teacher/details/' + teacher.id}" th:text="#{list.details}">detalles</a></td>
+                <td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/teacher/edit/' + teacher}"
+                       th:text="#{list.modify}">modificar</a></td>
+                <td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/teacher/delete/' + teacher.id}"
+                       th:text="#{list.delete}">eliminar</a></td>
             </tr>
             </tbody>
         </table>
     </div>
     <div th:if="${#lists.isEmpty(teacherList)}" th:text="#{teacher.list.empty}"> No teachers</div>
+    <footer th:replace="fragments/pagination"/>
 </div>
 <footer th:replace="fragments/footer"/>
 </body>

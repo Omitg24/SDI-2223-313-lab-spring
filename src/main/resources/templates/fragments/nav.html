@@ -29,7 +29,8 @@ springsecurity4">
                    id="profesorDropdown" role="button" th:text="#{nav.teacher.title}"> Gestión de profesores
                 </a>
                 <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                    <a class="dropdown-item" href="/teacher/add" sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{nav.teacher.add}">Agregar profesor</a>
+                    <a class="dropdown-item" href="/teacher/add" sec:authorize="hasRole('ROLE_ADMIN')"
+                       th:text="#{nav.teacher.add}">Agregar profesor</a>
                     <a class="dropdown-item" href="/teacher/list" th:text="#{nav.teacher.list}">Ver profesores</a>
                 </div>
             </li>

@@ -12,10 +12,8 @@ springsecurity4" xmlns:th="http://thymeleaf.org">
         <b sec:authentication="principal.username" th:inline="text"></b>
     </p>
     <p th:text="#{home.marks}">Notas del usuario</p>
-    <div class="table-responsive">
-        <table th:replace="fragments/marksTable"/>
+    <div class="table-responsive" th:replace="fragments/marksTable">
     </div>
-</div>
 </div>
 <footer th:replace="fragments/footer"/>
 </body>
