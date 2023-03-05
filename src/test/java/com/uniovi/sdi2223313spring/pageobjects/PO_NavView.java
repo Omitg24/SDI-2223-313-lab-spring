@@ -54,4 +54,8 @@ public class PO_NavView extends PO_View {
     }
 
 
+    static public void clickLogout(WebDriver driver){
+        By boton = By.xpath("/html/body/nav/div/div[2]/ul/li[2]/a/span");
+        driver.findElement(boton).click();
+    }
 }
