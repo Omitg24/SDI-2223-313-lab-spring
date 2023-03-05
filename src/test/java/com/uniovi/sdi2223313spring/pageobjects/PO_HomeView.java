@@ -1,15 +1,12 @@
 package com.uniovi.sdi2223313spring.pageobjects;
 
 import com.uniovi.sdi2223313spring.util.SeleniumUtils;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.springframework.core.annotation.Order;
 
 import java.util.List;
 
-public class PO_HomeView extends PO_NavView{
+public class PO_HomeView extends PO_NavView {
     static public void checkWelcomeToPage(WebDriver driver, int language) {
         //Esperamos a que se cargue el saludo de bienvenida en Español
         SeleniumUtils.waitLoadElementsBy(driver, "text", p.getString("welcome.message", language),
