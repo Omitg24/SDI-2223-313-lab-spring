@@ -2,6 +2,7 @@ package com.uniovi.sdi2223313spring.pageobjects;
 
 import com.uniovi.sdi2223313spring.util.SeleniumUtils;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -51,4 +52,6 @@ public class PO_NavView extends PO_View {
                 getTimeout());
         Selectedlanguage.get(0).click();
     }
+
+
 }
